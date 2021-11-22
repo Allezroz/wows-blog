@@ -1,5 +1,7 @@
-Exploring Player Survival Rates
-================
+---
+layout: post
+title: "Exploring Player Survival Rates"
+---
 
 ### Background
 
