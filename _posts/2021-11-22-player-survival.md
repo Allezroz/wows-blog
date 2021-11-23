@@ -188,4 +188,7 @@ on, but if they aren’t doing anything, they aren’t creating any value,
 so playing ‘too safe’ is as bad as being ‘too aggressive’ - it is about
 generating value not surviving per se.
 
-So: I need to consider my survival more, regardless.
+So: I need to consider my survival more, regardless, but I'm not sure a 
+strong conclusion can be drawn. 
+
+If you are going to die, make sure you die for a reason, I guess.
