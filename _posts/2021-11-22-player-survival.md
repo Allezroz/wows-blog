@@ -50,7 +50,7 @@ playerRates %>%
   theme(legend.position = "none")
 ```
 
-![](/_posts/player-survival-1.png)<!-- -->
+![Survival vs Winrate](/_posts/player-survival-1.png)
 
 This isn’t bad, actually: there is a non-zero visible correlation
 between winrate and individual survival rate, but it is not especially
