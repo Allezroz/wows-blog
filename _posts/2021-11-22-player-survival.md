@@ -79,7 +79,7 @@ playerRates %>%
   facet_grid(vars(Result))
 ```
 
-![](https://github.com/Ghesthar/wows-blog/blob/3aeaf5dc90ce39b5081bba468e06a5a49815d457/_posts/player-survival-2.png)<!-- -->
+![Survival by Result](/wows-blog/assets/player-survival-2.png)<!-- -->
 
 So, there is obviously going to be a correlation between winning and
 surviving - even absolute sausages like me survive far more when they
@@ -177,7 +177,7 @@ playerRates %>%
   facet_wrap(vars(Class))
 ```
 
-![](https://github.com/Ghesthar/wows-blog/blob/3aeaf5dc90ce39b5081bba468e06a5a49815d457/_posts/player-survival-3.png)<!-- -->
+![Survival by Ship Class](/wows-blog/assets/player-survival-3.png)<!-- -->
 
 If I filter out people with fewer than 2 games (a low bar, but here we
 are) then we see a relatively weak but consistent positive correlation
