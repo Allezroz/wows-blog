@@ -330,7 +330,7 @@ playerRates %>%
 ![](/wows-blog/assets/unnamed-chunk-10-2.png)<!-- -->
 
 What is abundantly clear is that the Tier 6 season (14) was a bit brutal
-- almost certainly far more results based on kills rather than points
+and almost certainly far more results based on kills rather than points
 compared to T10 seasons. Correlations are not dissimilar to what we see
 currently, where it is almost certainly more valuable to create value
 rather than strictly survive. DDs have the flattest fit line almost
