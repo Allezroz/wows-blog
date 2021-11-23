@@ -1,9 +1,5 @@
----
-layout: post
-title: "Exploring Player Survival Rates"
----
-
-### Background
+Exploring Player Survival Rates
+================
 
 With the data currently available, it is difficult to directly infer or
 correlate player performance with game outcomes. There is a near total
@@ -41,9 +37,10 @@ playerRates %>%
   geom_point(aes(colour=SurRate>0.5))+
   geom_text(hjust=1.2,size=2)+
   geom_line(linetype="dotdash",aes(y=0.5, colour="lightgrey",alpha=0.5))+
+  geom_line(linetype="dotdash",aes(x=0.5, colour="lightgrey",alpha=0.5))+
   theme_classic()+
   guides(color=guide_legend(title=""))+
-  ggtitle("WR vs Sur")+
+  ggtitle("WR vs Survival S15")+
   ylab("Winrate")+
   xlab("Survival Rate")+
   geom_smooth(method='lm', formula= y~x)+
@@ -72,7 +69,7 @@ playerRates %>%
   theme_classic()+
   theme(axis.text.x = element_text(angle = 90, vjust = 0.5, hjust=1))+
   guides(color=guide_legend(title=""))+
-  ggtitle("WR vs Sur")+
+  ggtitle("Survival faceted by Winrate")+
   ylab("Survival Rate")+
   xlab("")+
   theme(legend.position = "none")+
@@ -167,9 +164,10 @@ playerRates %>%
   geom_point()+
   geom_text(hjust=1.2,size=2)+
   geom_line(linetype="dotdash",aes(y=0.5, colour="lightgrey",alpha=0.5))+
+  geom_line(linetype="dotdash",aes(x=0.5, colour="lightgrey",alpha=0.5))+
   theme_classic()+
   guides(color=guide_legend(title=""))+
-  ggtitle("WR vs Sur")+
+  ggtitle("Winrate and Survival by Class")+
   ylab("Winrate")+
   xlab("Survival Rate")+
   theme(legend.position = "none")+
@@ -188,4 +186,217 @@ on, but if they aren’t doing anything, they aren’t creating any value,
 so playing ‘too safe’ is as bad as being ‘too aggressive’ - it is about
 generating value not surviving per se.
 
-So: I need to consider my survival more, regardless.
+So: I need to consider my survival more, regardless, and if you’re going
+to die, die for a reason.
+
+Since the current season dataset is quite small, I’ll have a look at the
+last two seasons individually, with the same visualisations, filtering
+out players with five or fewer games:
+
+``` r
+games14 <- cbGames %>% filter(Season==14)
+players14 <- cbPlayers %>% filter(GID %in% games14$GID, Clan=="RUMR")
+games13 <- cbGames %>% filter(Season==13)
+players13 <- cbPlayers %>% filter(GID %in% games13$GID, Clan=="RUMR")
+```
+
+``` r
+playerRates <- players14 %>% group_by(Name) %>% summarise(SurRate = mean(as.numeric(Survived)),WinRate=mean(Result),N=n()) %>% filter(N>5)
+
+playerRates %>%
+  ggplot(aes(x=SurRate,y=WinRate,label=Name))+
+  scale_color_manual(values=c("TRUE"="cornflowerblue","FALSE"="darkred"))+
+  geom_point(aes(colour=SurRate>0.5))+
+  geom_text(hjust=1.2,size=2)+
+  geom_line(linetype="dotdash",aes(y=0.5, colour="lightgrey",alpha=0.5))+
+  geom_line(linetype="dotdash",aes(x=0.5, colour="lightgrey",alpha=0.5))+
+  theme_classic()+
+  guides(color=guide_legend(title=""))+
+  ggtitle("WR vs Survival S14")+
+  ylab("Winrate")+
+  xlab("Survival Rate")+
+  geom_smooth(method='lm', formula= y~x)+
+  theme(legend.position = "none")
+```
+
+![](2021-11-22-player-survival_files/figure-gfm/unnamed-chunk-8-1.png)<!-- -->
+
+``` r
+playerRates <- players13 %>% group_by(Name) %>% summarise(SurRate = mean(as.numeric(Survived)),WinRate=mean(Result),N=n()) %>% filter(N>5)
+
+playerRates %>%
+  ggplot(aes(x=SurRate,y=WinRate,label=Name))+
+  scale_color_manual(values=c("TRUE"="cornflowerblue","FALSE"="darkred"))+
+  geom_point(aes(colour=SurRate>0.5))+
+  geom_text(hjust=1.2,size=2)+
+  geom_line(linetype="dotdash",aes(y=0.5, colour="lightgrey",alpha=0.5))+
+  geom_line(linetype="dotdash",aes(x=0.5, colour="lightgrey",alpha=0.5))+
+  theme_classic()+
+  guides(color=guide_legend(title=""))+
+  ggtitle("WR vs Survival S13")+
+  ylab("Winrate")+
+  xlab("Survival Rate")+
+  geom_smooth(method='lm', formula= y~x)+
+  theme(legend.position = "none")
+```
+
+![](2021-11-22-player-survival_files/figure-gfm/unnamed-chunk-8-2.png)<!-- -->
+
+``` r
+playerRates <- players14 %>% group_by(Name,Result) %>% summarise(SurRate = mean(as.numeric(Survived)),N=n(),.groups = 'drop') %>% filter(N>5)
+
+playerRates %>%
+  ggplot(aes(x=Name,y=SurRate,fill=SurRate>0.5,label=Name))+
+  scale_fill_manual(values=c("TRUE"="cornflowerblue","FALSE"="darkred"))+
+  geom_col()+
+  theme_classic()+
+  theme(axis.text.x = element_text(angle = 90, vjust = 0.5, hjust=1))+
+  guides(color=guide_legend(title=""))+
+  ggtitle("Survival faceted by Winrate S14")+
+  ylab("Survival Rate")+
+  xlab("")+
+  theme(legend.position = "none")+
+  facet_grid(vars(Result))
+```
+
+![](2021-11-22-player-survival_files/figure-gfm/unnamed-chunk-9-1.png)<!-- -->
+
+``` r
+playerRates <- players13 %>% group_by(Name,Result) %>% summarise(SurRate = mean(as.numeric(Survived)),N=n(),.groups = 'drop') %>% filter(N>5)
+
+playerRates %>%
+  ggplot(aes(x=Name,y=SurRate,fill=SurRate>0.5,label=Name))+
+  scale_fill_manual(values=c("TRUE"="cornflowerblue","FALSE"="darkred"))+
+  geom_col()+
+  theme_classic()+
+  theme(axis.text.x = element_text(angle = 90, vjust = 0.5, hjust=1))+
+  guides(color=guide_legend(title=""))+
+  ggtitle("Survival faceted by Winrate S13")+
+  ylab("Survival Rate")+
+  xlab("")+
+  theme(legend.position = "none")+
+  facet_grid(vars(Result))
+```
+
+![](2021-11-22-player-survival_files/figure-gfm/unnamed-chunk-9-2.png)<!-- -->
+
+``` r
+playerRates <- players14 %>% group_by(Name,Class) %>% summarise(SurRate = mean(as.numeric(Survived)),WinRate=mean(Result),N=n(),.groups="drop") %>% filter(N>5)
+
+playerRates %>%
+  ggplot(aes(x=SurRate,y=WinRate,label=Name))+
+  scale_color_manual(values=c("TRUE"="cornflowerblue","FALSE"="darkred"))+
+  geom_point()+
+  geom_text(hjust=1.2,size=2)+
+  geom_line(linetype="dotdash",aes(y=0.5, colour="lightgrey",alpha=0.5))+
+  geom_line(linetype="dotdash",aes(x=0.5, colour="lightgrey",alpha=0.5))+
+  theme_classic()+
+  guides(color=guide_legend(title=""))+
+  ggtitle("Winrate and Survival by Class S14")+
+  ylab("Winrate")+
+  xlab("Survival Rate")+
+  theme(legend.position = "none")+
+  geom_smooth(method='lm', formula= y~x)+
+  facet_wrap(vars(Class))
+```
+
+![](2021-11-22-player-survival_files/figure-gfm/unnamed-chunk-10-1.png)<!-- -->
+
+``` r
+playerRates <- players13 %>% group_by(Name,Class) %>% summarise(SurRate = mean(as.numeric(Survived)),WinRate=mean(Result),N=n(),.groups="drop") %>% filter(N>5)
+
+playerRates %>%
+  ggplot(aes(x=SurRate,y=WinRate,label=Name))+
+  scale_color_manual(values=c("TRUE"="cornflowerblue","FALSE"="darkred"))+
+  geom_point()+
+  geom_text(hjust=1.2,size=2)+
+  geom_line(linetype="dotdash",aes(y=0.5, colour="lightgrey",alpha=0.5))+
+  geom_line(linetype="dotdash",aes(x=0.5, colour="lightgrey",alpha=0.5))+
+  theme_classic()+
+  guides(color=guide_legend(title=""))+
+  ggtitle("Winrate and Survival by Class S13")+
+  ylab("Winrate")+
+  xlab("Survival Rate")+
+  theme(legend.position = "none")+
+  geom_smooth(method='lm', formula= y~x)+
+  facet_wrap(vars(Class))
+```
+
+    ## geom_path: Each group consists of only one observation. Do you need to adjust
+    ## the group aesthetic?
+    ## geom_path: Each group consists of only one observation. Do you need to adjust
+    ## the group aesthetic?
+
+![](2021-11-22-player-survival_files/figure-gfm/unnamed-chunk-10-2.png)<!-- -->
+
+What is abundantly clear is that the Tier 6 season (14) was a bit brutal
+- almost certainly far more results based on kills rather than points
+compared to T10 seasons. Correlations are not dissimilar to what we see
+currently, where it is almost certainly more valuable to create value
+rather than strictly survive. DDs have the flattest fit line almost
+across the board, which really seems to support this conclusion for that
+class - taking no risky plays generates low value, but taking too many
+will average out to low value.
+
+I can take some solace in the fact that over larger sample sizes my
+survival rates aren’t atrocious, but I should certainly keep them in
+mind nonetheless.
+
+It doesn’t look like there is much to be drawn in the way of conclusions
+here: survival is clearly somewhat correlated with winning, but this is
+inevitable since everyone dying is a loss. Without being able to see how
+long they survived for, or how much value they created before dying, I’m
+not sure there is anything useful here, outside of seeing some
+consistent low outlier individuals who might be worth closer inspection.
+
+Like me. I die a lot.
+
+An afterthought: I meant to look at average players left alive by game
+result.
+
+``` r
+players %>% group_by(GID,Result) %>% summarise(Sur=mean(Survived),.groups="drop") %>%
+  ggplot(aes(x=Sur))+
+  geom_histogram(stat="bin",bins=10)+
+  facet_grid(vars(Result))+
+  ylab("Count")+
+  xlab("% Team Surviving")+
+  ggtitle("Team Survival Percentages S15")+
+  geom_density(aes(y=..density..*5),colour="Red")
+```
+
+![](2021-11-22-player-survival_files/figure-gfm/unnamed-chunk-11-1.png)<!-- -->
+
+``` r
+players14 %>% group_by(GID,Result) %>% summarise(Sur=mean(Survived),.groups="drop") %>%
+  ggplot(aes(x=Sur))+
+  geom_histogram(stat="bin",bins=10)+
+  facet_grid(vars(Result))+
+  ggtitle("Team Survival Percentages S14")+
+  ylab("Count")+
+  xlab("% Team Surviving")+
+  geom_density(aes(y=..density..*15),colour="Red")
+```
+
+![](2021-11-22-player-survival_files/figure-gfm/unnamed-chunk-11-2.png)<!-- -->
+
+``` r
+players13 %>% group_by(GID,Result) %>% summarise(Sur=mean(Survived),.groups="drop") %>%
+  ggplot(aes(x=Sur))+
+  geom_histogram(stat="bin",bins=10)+
+  facet_grid(vars(Result))+
+  ggtitle("Team Survival Percentages S13")+
+  ylab("Count")+
+  xlab("% Team Surviving")+
+  geom_density(aes(y=..density..*10),colour="Red")
+```
+
+![](2021-11-22-player-survival_files/figure-gfm/unnamed-chunk-11-3.png)<!-- -->
+
+This just repeats my observation before: the tier 6 season was
+absolutely brutal, and tier 10 games are much more likely to be decided
+on points. This should probably influence how we intend to play maps:
+reposition to shore up when we have a cap advantage, and try to work out
+where we can get that. While kills/losses are huge point swings, if
+games are going to points or timer, they aren’t everything by a
+longshot.
