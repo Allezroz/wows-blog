@@ -1,6 +1,6 @@
 ---
 layout: post
-title: Exploring Player Survival Rates
+title: "Exploring Player Survival Rates"
 ---
 
 ### Background
