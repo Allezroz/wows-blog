@@ -47,7 +47,7 @@ playerRates %>%
   theme(legend.position = "none")
 ```
 
-![](2021-11-22-player-survival_files/figure-gfm/unnamed-chunk-1-1.png)<!-- -->
+![](/wows-blog/assets/unnamed-chunk-1-1.png)<!-- -->
 
 This isn’t bad, actually: there is a non-zero visible correlation
 between winrate and individual survival rate, but it is not especially
@@ -76,7 +76,7 @@ playerRates %>%
   facet_grid(vars(Result))
 ```
 
-![](2021-11-22-player-survival_files/figure-gfm/unnamed-chunk-2-1.png)<!-- -->
+![](/wows-blog/assets/unnamed-chunk-2-1.png)<!-- -->
 
 So, there is obviously going to be a correlation between winning and
 surviving - even absolute sausages like me survive far more when they
@@ -175,7 +175,7 @@ playerRates %>%
   facet_wrap(vars(Class))
 ```
 
-![](2021-11-22-player-survival_files/figure-gfm/unnamed-chunk-6-1.png)<!-- -->
+![](/wows-blog/assets/unnamed-chunk-6-1.png)<!-- -->
 
 If I filter out people with fewer than 2 games (a low bar, but here we
 are) then we see a relatively weak but consistent positive correlation
@@ -219,7 +219,7 @@ playerRates %>%
   theme(legend.position = "none")
 ```
 
-![](2021-11-22-player-survival_files/figure-gfm/unnamed-chunk-8-1.png)<!-- -->
+![](/wows-blog/assets/unnamed-chunk-8-1.png)<!-- -->
 
 ``` r
 playerRates <- players13 %>% group_by(Name) %>% summarise(SurRate = mean(as.numeric(Survived)),WinRate=mean(Result),N=n()) %>% filter(N>5)
@@ -240,7 +240,7 @@ playerRates %>%
   theme(legend.position = "none")
 ```
 
-![](2021-11-22-player-survival_files/figure-gfm/unnamed-chunk-8-2.png)<!-- -->
+![](/wows-blog/assets/unnamed-chunk-8-2.png)<!-- -->
 
 ``` r
 playerRates <- players14 %>% group_by(Name,Result) %>% summarise(SurRate = mean(as.numeric(Survived)),N=n(),.groups = 'drop') %>% filter(N>5)
@@ -259,7 +259,7 @@ playerRates %>%
   facet_grid(vars(Result))
 ```
 
-![](2021-11-22-player-survival_files/figure-gfm/unnamed-chunk-9-1.png)<!-- -->
+![](/wows-blog/assets/unnamed-chunk-9-1.png)<!-- -->
 
 ``` r
 playerRates <- players13 %>% group_by(Name,Result) %>% summarise(SurRate = mean(as.numeric(Survived)),N=n(),.groups = 'drop') %>% filter(N>5)
@@ -278,7 +278,7 @@ playerRates %>%
   facet_grid(vars(Result))
 ```
 
-![](2021-11-22-player-survival_files/figure-gfm/unnamed-chunk-9-2.png)<!-- -->
+![](/wows-blog/assets/unnamed-chunk-9-2.png)<!-- -->
 
 ``` r
 playerRates <- players14 %>% group_by(Name,Class) %>% summarise(SurRate = mean(as.numeric(Survived)),WinRate=mean(Result),N=n(),.groups="drop") %>% filter(N>5)
@@ -300,7 +300,7 @@ playerRates %>%
   facet_wrap(vars(Class))
 ```
 
-![](2021-11-22-player-survival_files/figure-gfm/unnamed-chunk-10-1.png)<!-- -->
+![](/wows-blog/assets/unnamed-chunk-10-1.png)<!-- -->
 
 ``` r
 playerRates <- players13 %>% group_by(Name,Class) %>% summarise(SurRate = mean(as.numeric(Survived)),WinRate=mean(Result),N=n(),.groups="drop") %>% filter(N>5)
@@ -327,7 +327,7 @@ playerRates %>%
     ## geom_path: Each group consists of only one observation. Do you need to adjust
     ## the group aesthetic?
 
-![](2021-11-22-player-survival_files/figure-gfm/unnamed-chunk-10-2.png)<!-- -->
+![](/wows-blog/assets/unnamed-chunk-10-2.png)<!-- -->
 
 What is abundantly clear is that the Tier 6 season (14) was a bit brutal
 - almost certainly far more results based on kills rather than points
@@ -365,7 +365,7 @@ players %>% group_by(GID,Result) %>% summarise(Sur=mean(Survived),.groups="drop"
   geom_density(aes(y=..density..*5),colour="Red")
 ```
 
-![](2021-11-22-player-survival_files/figure-gfm/unnamed-chunk-11-1.png)<!-- -->
+![](/wows-blog/assets/unnamed-chunk-11-1.png)<!-- -->
 
 ``` r
 players14 %>% group_by(GID,Result) %>% summarise(Sur=mean(Survived),.groups="drop") %>%
@@ -378,7 +378,7 @@ players14 %>% group_by(GID,Result) %>% summarise(Sur=mean(Survived),.groups="dro
   geom_density(aes(y=..density..*15),colour="Red")
 ```
 
-![](2021-11-22-player-survival_files/figure-gfm/unnamed-chunk-11-2.png)<!-- -->
+![](/wows-blog/assets/unnamed-chunk-11-2.png)<!-- -->
 
 ``` r
 players13 %>% group_by(GID,Result) %>% summarise(Sur=mean(Survived),.groups="drop") %>%
@@ -391,7 +391,7 @@ players13 %>% group_by(GID,Result) %>% summarise(Sur=mean(Survived),.groups="dro
   geom_density(aes(y=..density..*10),colour="Red")
 ```
 
-![](2021-11-22-player-survival_files/figure-gfm/unnamed-chunk-11-3.png)<!-- -->
+![](/wows-blog/assets/unnamed-chunk-11-3.png)<!-- -->
 
 This just repeats my observation before: the tier 6 season was
 absolutely brutal, and tier 10 games are much more likely to be decided
