@@ -50,7 +50,7 @@ playerRates %>%
   theme(legend.position = "none")
 ```
 
-![](2021-11-22-player-survival_files/figure-gfm/unnamed-chunk-1-1.png)<!-- -->
+![]https://github.com/Ghesthar/wows-blog/blob/3aeaf5dc90ce39b5081bba468e06a5a49815d457/_posts/player-survival-1.png<!-- -->
 
 This isn’t bad, actually: there is a non-zero visible correlation
 between winrate and individual survival rate, but it is not especially
