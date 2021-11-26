@@ -35,7 +35,7 @@ goodPlayers %>%
   ylab("Relative Frequency")
 ```
 
-![Relative Frequency of Ship Picks](wows-blog/assets/2021-11-26-good-clan-comps_files/figure-gfm/unnamed-chunk-1-1.png)<!-- -->
+![Relative Frequency of Ship Picks](/wows-blog/assets/2021-11-26-good-clan-comps_files/figure-gfm/unnamed-chunk-1-1.png)<!-- -->
 
 Unsurprisingly, most ships that are popular are approximately uniformly
 popular between the ‘good’ leagues. Ragnars are more popular in
@@ -66,7 +66,7 @@ ggplot(data=tyShips %>% filter(Class=="BB"),aes(x=Ship,y = prop))+
   ggtitle("Relative Frequency of BB Picks by League")
 ```
 
-![BB picks](wows-blog/assets/2021-11-26-good-clan-comps_files/figure-gfm/unnamed-chunk-3-1.png)<!-- -->
+![BB picks](/wows-blog/assets/2021-11-26-good-clan-comps_files/figure-gfm/unnamed-chunk-3-1.png)<!-- -->
 
 ``` r
 ggplot(data=tyShips %>% filter(Class=="CA"),aes(x=Ship,y = prop))+
@@ -79,7 +79,7 @@ ggplot(data=tyShips %>% filter(Class=="CA"),aes(x=Ship,y = prop))+
   ggtitle("Relative Frequency of CA Picks by League")
 ```
 
-![CA picks](wows-blog/assets/2021-11-26-good-clan-comps_files/figure-gfm/unnamed-chunk-3-2.png)<!-- -->
+![CA picks](/wows-blog/assets/2021-11-26-good-clan-comps_files/figure-gfm/unnamed-chunk-3-2.png)<!-- -->
 
 ``` r
 ggplot(data=tyShips %>% filter(Class=="DD"),aes(x=Ship,y = prop))+
@@ -92,7 +92,7 @@ ggplot(data=tyShips %>% filter(Class=="DD"),aes(x=Ship,y = prop))+
   ggtitle("Relative Frequency of DD Picks by League")
 ```
 
-![DD picks](wows-blog/assets/2021-11-26-good-clan-comps_files/figure-gfm/unnamed-chunk-3-3.png)<!-- -->
+![DD picks](/wows-blog/assets/2021-11-26-good-clan-comps_files/figure-gfm/unnamed-chunk-3-3.png)<!-- -->
 
 A bit cluttered, since it includes all the low-frequency picks. Most
 interesting takeaways: 
