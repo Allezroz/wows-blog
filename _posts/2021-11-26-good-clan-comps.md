@@ -35,7 +35,7 @@ goodPlayers %>%
   ylab("Relative Frequency")
 ```
 
-![](2021-11-26-good-clan-comps_files/figure-gfm/unnamed-chunk-1-1.png)<!-- -->
+![](wows-blog/assets/2021-11-26-good-clan-comps_files/figure-gfm/unnamed-chunk-1-1.png)<!-- -->
 
 Unsurprisingly, most ships that are popular are approximately uniformly
 popular between the ‘good’ leagues. Ragnars are more popular in
@@ -66,7 +66,7 @@ ggplot(data=tyShips %>% filter(Class=="BB"),aes(x=Ship,y = prop))+
   ggtitle("Relative Frequency of BB Picks by League")
 ```
 
-![](2021-11-26-good-clan-comps_files/figure-gfm/unnamed-chunk-3-1.png)<!-- -->
+![](wows-blog/assets/2021-11-26-good-clan-comps_files/figure-gfm/unnamed-chunk-3-1.png)<!-- -->
 
 ``` r
 ggplot(data=tyShips %>% filter(Class=="CA"),aes(x=Ship,y = prop))+
@@ -79,7 +79,7 @@ ggplot(data=tyShips %>% filter(Class=="CA"),aes(x=Ship,y = prop))+
   ggtitle("Relative Frequency of CA Picks by League")
 ```
 
-![](2021-11-26-good-clan-comps_files/figure-gfm/unnamed-chunk-3-2.png)<!-- -->
+![](wows-blog/assets/2021-11-26-good-clan-comps_files/figure-gfm/unnamed-chunk-3-2.png)<!-- -->
 
 ``` r
 ggplot(data=tyShips %>% filter(Class=="DD"),aes(x=Ship,y = prop))+
@@ -92,30 +92,34 @@ ggplot(data=tyShips %>% filter(Class=="DD"),aes(x=Ship,y = prop))+
   ggtitle("Relative Frequency of DD Picks by League")
 ```
 
-![](2021-11-26-good-clan-comps_files/figure-gfm/unnamed-chunk-3-3.png)<!-- -->
+![](wows-blog/assets/2021-11-26-good-clan-comps_files/figure-gfm/unnamed-chunk-3-3.png)<!-- -->
 
 A bit cluttered, since it includes all the low-frequency picks. Most
-interesting takeaways: - The french BBs are not especially popular
-anywhere, presumably you have to build around them to make them ‘work’ -
-Yamatos are surprisingly common among ‘good’ teams - approximately twice
-as likely to be picked in ty/hur than among the general population -
-Ohios are picked slightly less often among ‘good’ teams. There is a dip
+interesting takeaways: 
+- The french BBs are not especially popular
+anywhere, presumably you have to build around them to make them ‘work’ 
+- Yamatos are surprisingly common among ‘good’ teams 
+- approximately twice as likely to be picked in ty/hur than among the general population 
+- Ohios are picked slightly less often among ‘good’ teams. There is a dip
 in Kremlins in Ty, but not Hur. I would expect this to be a reaction to
 the Yamato pickrate: it overmatches Ohio pretty much everywhere, while
 Kremlin remains sturdy. This probably also explains the Conq spike in Ty
-not being reflected in Hurricane. - Petros are in almost every game at
+not being reflected in Hurricane. 
+- Petros are in almost every game at
 almost every level. If WG is going to ban a ship this season, Petro is
-my first bet. - Kiting ships are pretty scattered at every level. Nevsky
+my first bet. 
+- Kiting ships are pretty scattered at every level. Nevsky
 takes top spot, with Napoli at about the same level among the highest
-level players. Venezia is slightly behind the two. - Salem and DM appear
-relatively frequently among all levels - Salem more in Hur, DM more in
+level players. Venezia is slightly behind the two. 
+- Salem and DM appear relatively frequently among all levels - Salem more in Hur, DM more in
 Ty. If we amalgamated them, DM-alike would be the second most popular
 ship overall. They appear together twice out of the 104 games we’ve
-played this season. - Russian cruisers are a bit popular. - Smaland is
-the top pick DD by a long way, especially among better players. Ragnar
+played this season. 
+- Russian cruisers are a bit popular. 
+- Smaland is the top pick DD by a long way, especially among better players. Ragnar
 is second among hurricane teams. They are picked together in more than
-10% of games (14/104, 11/14 with Ty or Hurricane clans) - Spotting DDs
-are relatively uncommon, with Somers topping the list below 5% in all
+10% of games (14/104, 11/14 with Ty or Hurricane clans) 
+- Spotting DDs are relatively uncommon, with Somers topping the list below 5% in all
 leagues.
 
 There might be a few ship selection takeaways for us if we want to
